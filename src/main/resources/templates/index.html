@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"/>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="jumbotron">
+    <div class="container">
+        <h1>Spring MVC + JPA with Kotlin</h1>
+        <p>깡샘의 코틀린 프로그래밍 - TODO Sample</p>
+    </div>
+</div>
+
+<div class="container" style="align-content: center; width: 50%">
+<table class="table table-striped" th:if="${todos.size() > 0}">
+    <tbody>
+    <tr th:each="todo : ${todos}">
+        <td style="width: 10%" th:text="${todo.todoId}"></td>
+        <td style="width: 75%" th:text="${todo.content}"></td>
+        <td style="width: 15%"><a th:href="@{/delete(todoId=${todo.todoId})}" class="btn btn-danger">Delete</a></td>
+    </tr>
+    </tbody>
+</table>
+
+<form th:action="@{/}" method="post">
+    <legend>Add TODO</legend>
+    <div class="row">
+        <div class="form-group col-10">
+            <input type="text" class="form-control" name="content" id="content"></input>
+        </div>
+        <div col="col-2">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+</form>
+</div>
+
+</body>
+</html>
